@@ -14,7 +14,7 @@ const caseStudies = [
     industry: 'Manufacturing & Industrial',
     description: 'Large-scale industrial manufacturing company selling custom metal fabrication and welding equipment through WooCommerce. Complex product configurations with heavy imagery were crushing site performance.',
     testimonial: 'WooThatsFast completely transformed our online presence. We went from losing customers due to slow loading to having one of the fastest metalworking sites in Texas. The 8-second load times that were killing our business are now under 1 second. Our sales increased 161% in the first year, and customer satisfaction is through the roof. This investment paid for itself within the first month.',
-    author: 'Jake Morrison',
+    author: 'Kirk P',
     role: 'Owner',
     metrics: [
       { label: 'Frontend Load Time', before: '3-5 seconds', after: '<1 second' },
@@ -45,8 +45,8 @@ const caseStudies = [
     industry: 'Welding & Equipment',
     description: 'Specialized welding equipment and supplies retailer with an extensive product catalog. Slow admin performance was hampering daily operations, and poor frontend speed was causing cart abandonment.',
     testimonial: 'Our daily workflow is so much smoother now. What used to take 20 minutes to update inventory now takes 5 minutes. Customer feedback about site speed has been overwhelmingly positive, and we\'ve seen a noticeable decrease in cart abandonment.',
-    author: 'Maria Santos',
-    role: 'E-commerce Director',
+    author: 'John P',
+    role: 'Owner',
     metrics: [
       { label: 'Frontend Load Time', before: '4-5 seconds', after: '<1 second' },
       { label: 'Admin Dashboard', before: '10-12 seconds', after: '1-2 seconds' },

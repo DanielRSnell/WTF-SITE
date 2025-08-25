@@ -19,7 +19,7 @@ const testimonials = [
     company: 'TexasMetalWorks',
     quote: 'WooThatsFast transformed our 8-second site into a sub-1-second powerhouse. Sales increased 31% in 60 days.',
     author: {
-      name: 'Jake Morrison',
+      name: 'Kirk P',
       role: 'Owner & Founder',
     },
   },
@@ -27,8 +27,8 @@ const testimonials = [
     company: 'WeldProjects.com',
     quote: 'From 5-second load times to instant responses. Our Core Web Vitals went from failing to 94/100.',
     author: {
-      name: 'Maria Santos',
-      role: 'E-commerce Director',
+      name: 'John P',
+      role: 'Owner',
     },
   },
   {
