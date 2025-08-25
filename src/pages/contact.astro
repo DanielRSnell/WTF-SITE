@@ -1,0 +1,10 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+import { ContactSection } from '@/components/sections/contact';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <ContactSection client:load />
+</DefaultLayout>

@@ -1,0 +1,12 @@
+---
+import { SITE_TITLE } from '@/consts';
+import { CoreWebVitalsSection } from '@/components/sections/core-web-vitals-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'Core Web Vitals Management for WooCommerce | WooThatsFast';
+const description = 'Guaranteed Google-grade performance scores with continuous monitoring and optimization. LCP < 2.5s, FID < 100ms, CLS < 0.1 for your WooCommerce store.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <CoreWebVitalsSection client:load />
+</DefaultLayout>

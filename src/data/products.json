@@ -1,0 +1,444 @@
+{
+  "products": [
+    {
+      "id": "woo-speed-starter",
+      "name": "WooSpeed Starter",
+      "description": "Essential WooCommerce Performance Optimization",
+      "price": 299,
+      "originalPrice": 399,
+      "image": "/images/products/product-1.webp",
+      "specifications": {
+        "general": [
+          {
+            "key": "optimizationTime",
+            "label": "Optimization Timeframe",
+            "value": "2-3 business days",
+            "icon": "Clock"
+          },
+          {
+            "key": "coreWebVitals",
+            "label": "Core Web Vitals Improvement",
+            "value": "Up to 40% faster load times",
+            "icon": "Zap"
+          },
+          {
+            "key": "pageSpeedScore",
+            "label": "PageSpeed Score Target",
+            "value": "85+ on mobile, 90+ on desktop",
+            "icon": "TrendingUp"
+          },
+          {
+            "key": "supportPeriod",
+            "label": "Support Period",
+            "value": "30 days post-optimization",
+            "icon": "Shield"
+          },
+          {
+            "key": "reportDelivery",
+            "label": "Report Delivery",
+            "value": "Detailed performance report",
+            "icon": "FileText"
+          }
+        ],
+        "optimizations": [
+          {
+            "key": "caching",
+            "label": "Caching Implementation",
+            "value": "Advanced WooCommerce-specific caching"
+          },
+          {
+            "key": "database",
+            "label": "Database Optimization",
+            "value": "Query optimization & indexing"
+          },
+          {
+            "key": "images",
+            "label": "Image Optimization",
+            "value": "WebP conversion & lazy loading"
+          }
+        ],
+        "features": [
+          {
+            "key": "mobileOptimization",
+            "label": "Mobile Optimization",
+            "value": "Responsive performance tuning"
+          },
+          {
+            "key": "checkoutOptimization",
+            "label": "Checkout Flow Optimization",
+            "value": "Streamlined checkout process"
+          },
+          {
+            "key": "productPages",
+            "label": "Product Page Speed",
+            "value": "Fast product browsing experience"
+          },
+          {
+            "key": "monitoring",
+            "label": "Performance Monitoring Setup",
+            "value": "Real-time performance tracking"
+          }
+        ],
+        "technical": [
+          {
+            "key": "compatibility",
+            "label": "WooCommerce Compatibility",
+            "value": "WooCommerce 5.0+ supported"
+          },
+          {
+            "key": "hostingTypes",
+            "label": "Hosting Support",
+            "value": "All major hosting providers"
+          },
+          {
+            "key": "backupIncluded",
+            "label": "Backup & Safety",
+            "value": "Full site backup before changes"
+          }
+        ],
+        "guarantees": [
+          {
+            "key": "performanceGuarantee",
+            "label": "Performance Guarantee",
+            "value": "Minimum 25% speed improvement"
+          },
+          {
+            "key": "moneyBack",
+            "label": "Money-Back Guarantee",
+            "value": "30-day satisfaction guarantee"
+          }
+        ]
+      }
+    },
+    {
+      "id": "woo-speed-pro",
+      "name": "WooSpeed Pro",
+      "description": "Advanced WooCommerce Performance & SEO Optimization",
+      "price": 599,
+      "originalPrice": 799,
+      "image": "/images/products/product-2.webp",
+      "specifications": {
+        "general": [
+          {
+            "key": "optimizationTime",
+            "label": "Optimization Timeframe",
+            "value": "3-5 business days",
+            "icon": "Clock"
+          },
+          {
+            "key": "coreWebVitals",
+            "label": "Core Web Vitals Improvement",
+            "value": "Up to 60% faster load times",
+            "icon": "Zap"
+          },
+          {
+            "key": "pageSpeedScore",
+            "label": "PageSpeed Score Target",
+            "value": "90+ on mobile, 95+ on desktop",
+            "icon": "TrendingUp"
+          },
+          {
+            "key": "supportPeriod",
+            "label": "Support Period",
+            "value": "60 days post-optimization",
+            "icon": "Shield"
+          },
+          {
+            "key": "reportDelivery",
+            "label": "Report Delivery",
+            "value": "Comprehensive performance & SEO report",
+            "icon": "FileText"
+          }
+        ],
+        "optimizations": [
+          {
+            "key": "advancedCaching",
+            "label": "Advanced Caching",
+            "value": "Multi-layer caching with CDN setup"
+          },
+          {
+            "key": "databaseTuning",
+            "label": "Database Performance Tuning",
+            "value": "Advanced query optimization & cleanup"
+          },
+          {
+            "key": "codeOptimization",
+            "label": "Code Optimization",
+            "value": "Theme & plugin performance audit"
+          }
+        ],
+        "features": [
+          {
+            "key": "seoOptimization",
+            "label": "Technical SEO Optimization",
+            "value": "Schema markup & site structure"
+          },
+          {
+            "key": "conversionOptimization",
+            "label": "Conversion Rate Optimization",
+            "value": "Checkout & product page optimization"
+          },
+          {
+            "key": "securityHardening",
+            "label": "Security Hardening",
+            "value": "Performance-focused security measures"
+          },
+          {
+            "key": "continuousMonitoring",
+            "label": "Continuous Monitoring",
+            "value": "Automated performance alerts"
+          }
+        ],
+        "technical": [
+          {
+            "key": "compatibility",
+            "label": "WooCommerce Compatibility",
+            "value": "All WooCommerce versions supported"
+          },
+          {
+            "key": "hostingOptimization",
+            "label": "Hosting Optimization",
+            "value": "Server-level performance tuning"
+          },
+          {
+            "key": "backupIncluded",
+            "label": "Backup & Safety",
+            "value": "Staged environment testing included"
+          }
+        ],
+        "guarantees": [
+          {
+            "key": "performanceGuarantee",
+            "label": "Performance Guarantee",
+            "value": "Minimum 40% speed improvement"
+          },
+          {
+            "key": "moneyBack",
+            "label": "Money-Back Guarantee",
+            "value": "60-day satisfaction guarantee"
+          }
+        ]
+      }
+    },
+    {
+      "id": "woo-speed-enterprise",
+      "name": "WooSpeed Enterprise",
+      "description": "Complete WooCommerce Performance Solution",
+      "price": 1299,
+      "originalPrice": 1599,
+      "image": "/images/products/product-3.webp",
+      "specifications": {
+        "general": [
+          {
+            "key": "optimizationTime",
+            "label": "Optimization Timeframe",
+            "value": "5-7 business days",
+            "icon": "Clock"
+          },
+          {
+            "key": "coreWebVitals",
+            "label": "Core Web Vitals Improvement",
+            "value": "Up to 80% faster load times",
+            "icon": "Zap"
+          },
+          {
+            "key": "pageSpeedScore",
+            "label": "PageSpeed Score Target",
+            "value": "95+ on mobile, 98+ on desktop",
+            "icon": "TrendingUp"
+          },
+          {
+            "key": "supportPeriod",
+            "label": "Support Period",
+            "value": "6 months ongoing support",
+            "icon": "Shield"
+          },
+          {
+            "key": "reportDelivery",
+            "label": "Report Delivery",
+            "value": "Executive performance dashboard",
+            "icon": "FileText"
+          }
+        ],
+        "optimizations": [
+          {
+            "key": "infrastructureOptimization",
+            "label": "Infrastructure Optimization",
+            "value": "Server architecture & CDN implementation"
+          },
+          {
+            "key": "customCaching",
+            "label": "Custom Caching Solutions",
+            "value": "Bespoke caching strategies"
+          },
+          {
+            "key": "codeRefactoring",
+            "label": "Code Refactoring",
+            "value": "Custom theme & plugin optimization"
+          }
+        ],
+        "features": [
+          {
+            "key": "scalabilityPlanning",
+            "label": "Scalability Planning",
+            "value": "Future-proof architecture design"
+          },
+          {
+            "key": "multiSiteOptimization",
+            "label": "Multi-site Optimization",
+            "value": "Network-wide performance tuning"
+          },
+          {
+            "key": "dedicatedSupport",
+            "label": "Dedicated Support Team",
+            "value": "Priority support with dedicated manager"
+          },
+          {
+            "key": "monthlyReports",
+            "label": "Monthly Performance Reports",
+            "value": "Ongoing performance analytics"
+          }
+        ],
+        "technical": [
+          {
+            "key": "compatibility",
+            "label": "WooCommerce Compatibility",
+            "value": "All versions + custom solutions"
+          },
+          {
+            "key": "enterpriseHosting",
+            "label": "Enterprise Hosting Support",
+            "value": "Dedicated server optimization"
+          },
+          {
+            "key": "stagingEnvironments",
+            "label": "Development Environments",
+            "value": "Full staging & testing setup"
+          }
+        ],
+        "guarantees": [
+          {
+            "key": "performanceGuarantee",
+            "label": "Performance Guarantee",
+            "value": "Minimum 60% speed improvement"
+          },
+          {
+            "key": "slaGuarantee",
+            "label": "SLA Guarantee",
+            "value": "99.9% uptime commitment"
+          }
+        ]
+      }
+    },
+    {
+      "id": "woo-speed-maintenance",
+      "name": "WooSpeed Maintenance",
+      "description": "Ongoing WooCommerce Performance Monitoring",
+      "price": 199,
+      "originalPrice": 299,
+      "image": "/images/products/product-4.webp",
+      "specifications": {
+        "general": [
+          {
+            "key": "billingPeriod",
+            "label": "Billing Period",
+            "value": "Monthly subscription service",
+            "icon": "Calendar"
+          },
+          {
+            "key": "monitoringFrequency",
+            "label": "Monitoring Frequency",
+            "value": "24/7 automated monitoring",
+            "icon": "Activity"
+          },
+          {
+            "key": "responseTime",
+            "label": "Issue Response Time",
+            "value": "Within 4 hours (business days)",
+            "icon": "Clock"
+          },
+          {
+            "key": "reportingSchedule",
+            "label": "Reporting Schedule",
+            "value": "Weekly performance reports",
+            "icon": "Calendar"
+          },
+          {
+            "key": "optimizationUpdates",
+            "label": "Optimization Updates",
+            "value": "Quarterly performance tune-ups",
+            "icon": "RefreshCw"
+          }
+        ],
+        "monitoring": [
+          {
+            "key": "uptimeMonitoring",
+            "label": "Uptime Monitoring",
+            "value": "99.9% uptime tracking"
+          },
+          {
+            "key": "speedMonitoring",
+            "label": "Speed Monitoring",
+            "value": "Core Web Vitals tracking"
+          },
+          {
+            "key": "errorTracking",
+            "label": "Error Tracking",
+            "value": "404 & server error monitoring"
+          }
+        ],
+        "maintenance": [
+          {
+            "key": "pluginUpdates",
+            "label": "Plugin Maintenance",
+            "value": "Performance impact assessment"
+          },
+          {
+            "key": "securityUpdates",
+            "label": "Security Updates",
+            "value": "Security patches & monitoring"
+          },
+          {
+            "key": "databaseMaintenance",
+            "label": "Database Maintenance",
+            "value": "Regular cleanup & optimization"
+          },
+          {
+            "key": "backupManagement",
+            "label": "Backup Management",
+            "value": "Automated daily backups"
+          }
+        ],
+        "support": [
+          {
+            "key": "prioritySupport",
+            "label": "Priority Support",
+            "value": "Direct access to optimization team"
+          },
+          {
+            "key": "performanceAlerts",
+            "label": "Performance Alerts",
+            "value": "Proactive issue notifications"
+          },
+          {
+            "key": "monthlyOptimization",
+            "label": "Monthly Optimization",
+            "value": "Ongoing performance improvements"
+          }
+        ],
+        "guarantees": [
+          {
+            "key": "responseGuarantee",
+            "label": "Response Time Guarantee",
+            "value": "4-hour response commitment"
+          },
+          {
+            "key": "performanceMaintenance",
+            "label": "Performance Maintenance",
+            "value": "Maintain optimized speed levels"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+
+import BlogPosts from '@/components/sections/blog-posts';
+import { SITE_TITLE, SITE_DESCRIPTION } from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { transformBlogPost } from '@/lib/blog';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .map(transformBlogPost);
+---
+
+<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <BlogPosts blogPosts={posts} client:load />
+</DefaultLayout>

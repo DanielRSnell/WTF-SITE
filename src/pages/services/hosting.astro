@@ -1,0 +1,12 @@
+---
+import { SITE_TITLE } from '@/consts';
+import { HostingManagementSection } from '@/components/sections/hosting-management-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'Self-Hosted WooCommerce Management | WooThatsFast';
+const description = 'Complete WooCommerce server setup and management. Get full server ownership with expert WooCommerce optimization. No managed hosting restrictions or markups.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <HostingManagementSection client:load />
+</DefaultLayout>

@@ -1,0 +1,12 @@
+---
+import { SITE_TITLE } from '@/consts';
+import { CaseStudiesSection } from '@/components/sections/case-studies-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'WooCommerce Performance Case Studies | WooThatsFast';
+const description = 'Real WooCommerce performance improvements. See how TexasMetalWorks and WeldProjects.com achieved sub-second load times and dramatically faster admin performance.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <CaseStudiesSection client:load />
+</DefaultLayout>

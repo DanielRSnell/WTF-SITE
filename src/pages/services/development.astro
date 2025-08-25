@@ -1,0 +1,12 @@
+---
+import { SITE_TITLE } from '@/consts';
+import { UnlimitedDevelopmentSection } from '@/components/sections/unlimited-development-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'Unlimited WooCommerce Development | WooThatsFast';
+const description = 'Unlimited WooCommerce development requests at a flat monthly rate. No hourly billing, no project delays. Expert WooCommerce developers on-demand.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <UnlimitedDevelopmentSection client:load />
+</DefaultLayout>

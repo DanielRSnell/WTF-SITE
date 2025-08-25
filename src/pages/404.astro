@@ -1,0 +1,11 @@
+---
+import NotFound from '@/components/sections/not-found';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout
+  title="404: Not Found"
+  description="Sorry, the page you're looking for doesn't exist."
+>
+  <NotFound client:load />
+</DefaultLayout>

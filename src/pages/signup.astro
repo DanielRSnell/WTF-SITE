@@ -1,0 +1,10 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+import { SignUpSection } from '@/components/sections/signup-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <SignUpSection client:load />
+</DefaultLayout>

@@ -1,0 +1,12 @@
+---
+import { SITE_TITLE } from '@/consts';
+import { RebuildsSection } from '@/components/sections/rebuilds-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'Performance Rebuilds | WooThatsFast';
+const description = 'Transform legacy WooCommerce sites into high-performance Gutenberg builds. Remove page builder bloat and modernize your store for speed and maintainability.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <RebuildsSection client:load />
+</DefaultLayout>

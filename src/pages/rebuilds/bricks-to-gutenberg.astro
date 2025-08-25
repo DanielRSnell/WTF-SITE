@@ -1,0 +1,11 @@
+---
+import { BricksConversionSection } from '@/components/sections/bricks-conversion-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'Bricks to Gutenberg Conversion | WooThatsFast';
+const description = 'Convert Bricks Builder complexity to native WordPress simplicity. Eliminate dependency overhead and achieve better Core Web Vitals with clean Gutenberg blocks.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <BricksConversionSection client:load />
+</DefaultLayout>

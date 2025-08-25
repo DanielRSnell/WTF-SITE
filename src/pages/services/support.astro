@@ -1,0 +1,376 @@
+---
+import { SITE_TITLE } from '@/consts';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'Advanced WooCommerce Support Plans | WooThatsFast';
+const description = 'Expert WooCommerce developers on-demand. Priority support, performance management, and development time included. No hosting required.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <main>
+    <!-- Hero Section -->
+    <section class="container">
+      <div class="bordered-div-padding border-x text-center lg:py-25">
+        <div class="max-w-4xl mx-auto space-y-6 md:space-y-8">
+          <div class="inline-flex items-center px-4 py-2 rounded-full bg-purple-100 text-purple-800 text-sm font-medium">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            No Hosting Required
+          </div>
+          
+          <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold leading-tight tracking-tight">
+            Advanced WooCommerce
+            <span class="block text-purple-600">Support Plans</span>
+          </h1>
+          
+          <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Expert WooCommerce developers on-demand—no hosting required. Get priority technical support, 
+            performance management, and included development time.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            <a href="#plans" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors">
+              View Plans
+            </a>
+            <a href="/contact" class="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors">
+              Get Custom Quote
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Plans -->
+    <section class="container" id="plans">
+      <div class="bordered-div-padding border border-t-0">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Choose Your Support Level</h2>
+            <p class="text-lg text-gray-600">Expert WooCommerce support without changing your hosting</p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Standard Plan -->
+            <div class="bg-white border-2 border-gray-200 rounded-lg p-8">
+              <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-2">Standard Advanced Support</h3>
+                <div class="flex items-center justify-center mb-4">
+                  <span class="text-4xl font-bold text-purple-600">$1,250</span>
+                  <span class="text-gray-600 ml-2">/month</span>
+                </div>
+                <p class="text-gray-600">Perfect for established WooCommerce stores</p>
+              </div>
+
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">Core Web Vitals Management</span>
+                    <p class="text-sm text-gray-600">Ongoing performance monitoring and optimization</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">4-Hour Response Time</span>
+                    <p class="text-sm text-gray-600">Priority technical support during business hours</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">Monthly Performance Reviews</span>
+                    <p class="text-sm text-gray-600">Detailed reports and optimization recommendations</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">Plugin Compatibility Testing</span>
+                    <p class="text-sm text-gray-600">Ensure your plugins work together without conflicts</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">Security Monitoring & Updates</span>
+                    <p class="text-sm text-gray-600">Keep your store secure with proactive monitoring</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">5 Hours Development Time</span>
+                    <p class="text-sm text-gray-600">Monthly included development for small fixes and updates</p>
+                  </div>
+                </div>
+              </div>
+
+              <a href="/contact" class="block w-full text-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors">
+                Get Standard Support
+              </a>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="bg-purple-50 border-2 border-purple-200 rounded-lg p-8 relative">
+              <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span class="bg-purple-600 text-white px-4 py-1 text-sm font-semibold rounded-full">Most Popular</span>
+              </div>
+
+              <div class="text-center mb-8">
+                <h3 class="text-2xl font-bold mb-2">Premium Advanced Support</h3>
+                <div class="flex items-center justify-center mb-4">
+                  <span class="text-4xl font-bold text-purple-600">$2,500</span>
+                  <span class="text-gray-600 ml-2">/month</span>
+                </div>
+                <p class="text-gray-600">For high-volume stores requiring dedicated attention</p>
+              </div>
+
+              <div class="mb-6 text-center">
+                <p class="text-purple-800 font-semibold">Everything in Standard, plus:</p>
+              </div>
+
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">1-Hour Response Time</span>
+                    <p class="text-sm text-gray-600">Critical issue resolution guarantee</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">Dedicated Account Manager</span>
+                    <p class="text-sm text-gray-600">Direct line to your assigned WooCommerce expert</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">Monthly Optimization Calls</span>
+                    <p class="text-sm text-gray-600">Strategic planning sessions for growth</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">Custom Reporting Dashboard</span>
+                    <p class="text-sm text-gray-600">Real-time performance and business metrics</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">15 Hours Development Time</span>
+                    <p class="text-sm text-gray-600">Substantial development work included monthly</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <div>
+                    <span class="font-semibold">Quarterly Strategy Sessions</span>
+                    <p class="text-sm text-gray-600">Business growth and optimization planning</p>
+                  </div>
+                </div>
+              </div>
+
+              <a href="/contact" class="block w-full text-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors">
+                Get Premium Support
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise Areas -->
+    <section class="container">
+      <div class="bordered-div-padding border border-t-0">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Our WooCommerce Expertise</h2>
+            <p class="text-lg text-gray-600">Complex technical challenges we solve regularly</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 7.172V5L8 4z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Complex Product Configurations</h3>
+                  <p class="text-gray-600">Variable products, bundles, subscriptions, and advanced product matrices</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v4a2 2 0 01-2 2H9a2 2 0 01-2-2v-4m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Custom Checkout Flows</h3>
+                  <p class="text-gray-600">Multi-step checkouts, custom fields, and complex payment integrations</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Business Logic Implementation</h3>
+                  <p class="text-gray-600">Custom pricing rules, inventory management, and tax calculations</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Third-Party Integrations</h3>
+                  <p class="text-gray-600">ERP, CRM, fulfillment, and marketing tool connections</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Performance Troubleshooting</h3>
+                  <p class="text-gray-600">Database optimization, query analysis, and bottleneck identification</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Scaling & Optimization</h3>
+                  <p class="text-gray-600">High-traffic optimization and multi-site management</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Our Support -->
+    <section class="container">
+      <div class="bordered-div-padding border border-t-0">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Our Support is Different</h2>
+            <p class="text-lg text-gray-600">Real WooCommerce expertise, not generic WordPress support</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">WooCommerce Specialists</h3>
+              <p class="text-gray-600">Our team lives and breathes WooCommerce. We understand the intricacies of e-commerce business logic.</p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Fast Response Times</h3>
+              <p class="text-gray-600">When your store is down, every minute counts. Our support team responds quickly and resolves issues fast.</p>
+            </div>
+            
+            <div class="text-center">
+              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">Proactive Monitoring</h3>
+              <p class="text-gray-600">We catch issues before they impact your customers. Performance monitoring and security updates included.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container">
+      <div class="bordered-div-padding border border-t-0 text-center">
+        <div class="max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold mb-4">Ready for Expert WooCommerce Support?</h2>
+          <p class="text-lg text-gray-600 mb-6">
+            Stop struggling with generic WordPress support. Get WooCommerce experts on your team.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="/contact" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors">
+              Start Support Plan
+            </a>
+            <a href="/case-studies" class="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors">
+              See Success Stories
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</DefaultLayout>

@@ -1,0 +1,11 @@
+---
+import { DiviConversionSection } from '@/components/sections/divi-conversion-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'Divi to Gutenberg Conversion | WooThatsFast';
+const description = 'Transform Divi layouts into clean Gutenberg design. Eliminate massive CSS overhead and achieve 4x faster admin editing with modern WordPress blocks.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <DiviConversionSection client:load />
+</DefaultLayout>

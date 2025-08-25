@@ -1,0 +1,18 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+import { AboutHero } from '@/components/sections/about-hero';
+import { AboutCaseStudy } from '@/components/sections/about-case-study';
+import { AboutMissionTeam } from '@/components/sections/about-mission-team';
+import { AboutTestimonials } from '@/components/sections/about-testimonials';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div class="overflow-hidden">
+    <AboutHero client:load />
+    <AboutMissionTeam client:load />
+    <AboutCaseStudy client:load />
+    <AboutTestimonials client:load />
+  </div>
+</DefaultLayout>

@@ -1,0 +1,12 @@
+---
+import { SITE_TITLE } from '@/consts';
+import { OptimizationSection } from '@/components/sections/optimization-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'WooCommerce Website Optimization | WooThatsFast';
+const description = 'Frontend optimization for existing WooCommerce sites. Improve Core Web Vitals, conversion rates, and user experience without changing hosts.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <OptimizationSection client:load />
+</DefaultLayout>

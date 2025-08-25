@@ -1,0 +1,12 @@
+---
+import { SITE_TITLE } from '@/consts';
+import { MigrationsSection } from '@/components/sections/migrations-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'Optimized WooCommerce Migrations | WooThatsFast';
+const description = 'Clean WooCommerce migration that removes years of accumulated bloat while improving performance. Database cleanup, optimization, and zero downtime transfer.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <MigrationsSection client:load />
+</DefaultLayout>

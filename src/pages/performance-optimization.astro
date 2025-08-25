@@ -1,0 +1,13 @@
+---
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+import { PerformanceJourneyTimeline } from '@/components/sections/performance-journey-timeline';
+---
+
+<DefaultLayout 
+  title="WooCommerce Performance Optimization Journey | WooThatsFast" 
+  description="Transform your underperforming WooCommerce store with our proven 4-step optimization process. From slow loading times to lightning-fast performance and optimized admin experience."
+>
+  <div class="overflow-hidden">
+    <PerformanceJourneyTimeline client:load />
+  </div>
+</DefaultLayout>

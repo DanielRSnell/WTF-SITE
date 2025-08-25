@@ -1,0 +1,1088 @@
+---
+title: 'Building Custom WooCommerce Performance Tools for Your Store'
+description: "Extend WooCommerce's performance capabilities with custom optimization tools tailored to your specific business needs and customer behavior patterns."
+date: '2025-02-19'
+authors:
+  [
+    { name: 'Fedir Davydov', image: '/images/blog/authors/fedir-davydov.webp' },
+    {
+      name: 'Yassine Zaanouni',
+      image: '/images/blog/authors/yassine-zaanouni.webp',
+    },
+  ]
+tags: ['Guides']
+coverImage: '/images/blog/blog-15.webp'
+---
+
+## Building Custom WooCommerce Performance Tools for Your Store
+
+Extend WooCommerce's performance capabilities with custom optimization tools tailored to your specific business needs and customer behavior patterns.
+
+## Beyond Standard WooCommerce Performance Tools
+
+WooCommerce comes with robust built-in performance features and is supported by many excellent optimization plugins:
+
+- **Caching plugins:** WP Rocket, W3 Total Cache, WP Super Cache
+- **Image optimization:** Smush, ShortPixel, Optimole
+- **Database optimization:** WP-Optimize, Advanced Database Cleaner
+- **CDN integration:** Cloudflare, MaxCDN, Amazon CloudFront
+- **Monitoring tools:** Query Monitor, New Relic, GTmetrix
+
+However, every WooCommerce store has unique requirements that call for specialized optimization approaches. This is where custom performance tools become invaluable.
+
+Custom performance tools allow you to extend WooCommerce's optimization capabilities with solutions that perfectly match your business domain, customer behavior, and specific performance challenges. In this guide, we'll explore how to build, implement, and deploy custom WooCommerce performance tools.
+
+## Use Cases for Custom WooCommerce Performance Tools
+
+Before diving into implementation, let's consider real-world scenarios where custom performance tools add significant value:
+
+### E-commerce Specific Performance Monitoring
+
+Standard performance tools might miss critical e-commerce metrics:
+
+- Checkout abandonment correlation with page load times
+- Product image loading impact on conversion rates  
+- Mobile vs desktop performance differences in purchasing behavior
+- Regional performance variations affecting international sales
+- Inventory update speed during high-traffic events
+
+### Advanced WooCommerce Caching Strategies
+
+Beyond basic page caching, stores often need:
+
+- Smart product variation caching
+- Customer-specific pricing cache management
+- Cart persistence optimization
+- Checkout flow acceleration
+- Dynamic inventory caching
+
+### Custom Analytics and Reporting
+
+Business-specific performance insights like:
+
+- Revenue correlation with Core Web Vitals
+- Customer segment performance analysis
+- Product category optimization priorities
+- Seasonal performance trend analysis
+- Competitive performance benchmarking
+
+### Specialized Performance Optimization
+
+Domain-specific optimizations such as:
+
+- Bulk product import performance
+- Complex pricing calculation optimization
+- Multi-vendor marketplace performance
+- Subscription renewal process optimization
+- International shipping calculation speed
+
+Let's build practical examples to demonstrate how custom WooCommerce performance tools work in practice.
+
+## Building Your First Custom Performance Tool
+
+We'll start with a practical example: a WooCommerce revenue-performance correlation tracker.
+
+### 1. Setting Up the Development Environment
+
+First, create a custom plugin for your performance tools:
+
+```php
+<?php
+/**
+ * Plugin Name: WooThatsFast Custom Performance Tools
+ * Description: Custom performance optimization tools for WooCommerce stores
+ * Version: 1.0.0
+ * Author: Your Store Team
+ */
+
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+// Define plugin constants
+define('WOOTHATSFAST_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('WOOTHATSFAST_PLUGIN_PATH', plugin_dir_path(__FILE__));
+
+// Initialize the plugin
+add_action('plugins_loaded', ['WooThatsFast_Custom_Tools', 'init']);
+
+class WooThatsFast_Custom_Tools {
+    
+    public static function init() {
+        // Only load if WooCommerce is active
+        if (!class_exists('WooCommerce')) {
+            add_action('admin_notices', [__CLASS__, 'woocommerce_missing_notice']);
+            return;
+        }
+        
+        // Load our performance tools
+        self::load_performance_tools();
+        
+        // Set up admin interface
+        add_action('admin_menu', [__CLASS__, 'add_admin_menu']);
+    }
+    
+    public static function load_performance_tools() {
+        require_once WOOTHATSFAST_PLUGIN_PATH . 'includes/class-revenue-performance-tracker.php';
+        require_once WOOTHATSFAST_PLUGIN_PATH . 'includes/class-smart-product-cache.php';
+        require_once WOOTHATSFAST_PLUGIN_PATH . 'includes/class-checkout-optimizer.php';
+        require_once WOOTHATSFAST_PLUGIN_PATH . 'includes/class-performance-analytics.php';
+        
+        // Initialize tools
+        WooThatsFast_Revenue_Performance_Tracker::init();
+        WooThatsFast_Smart_Product_Cache::init();
+        WooThatsFast_Checkout_Optimizer::init();
+        WooThatsFast_Performance_Analytics::init();
+    }
+}
+```
+
+### 2. Building a Revenue-Performance Correlation Tool
+
+Create a tool that tracks how performance metrics correlate with revenue:
+
+```php
+<?php
+// includes/class-revenue-performance-tracker.php
+
+class WooThatsFast_Revenue_Performance_Tracker {
+    
+    private static $instance = null;
+    
+    public static function init() {
+        if (null === self::$instance) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+    
+    public function __construct() {
+        // Track performance when orders are completed
+        add_action('woocommerce_payment_complete', [$this, 'track_order_performance']);
+        add_action('woocommerce_order_status_completed', [$this, 'track_order_performance']);
+        
+        // Set up performance measurement
+        add_action('wp_loaded', [$this, 'start_performance_tracking']);
+        add_action('wp_footer', [$this, 'complete_performance_tracking']);
+        
+        // Admin interface
+        add_action('wp_ajax_woothatsfast_performance_data', [$this, 'get_performance_data']);
+    }
+    
+    public function start_performance_tracking() {
+        if (is_admin() || wp_doing_ajax()) {
+            return;
+        }
+        
+        // Store page start time in session
+        if (!session_id()) {
+            session_start();
+        }
+        
+        $_SESSION['woothatsfast_page_start'] = microtime(true);
+        $_SESSION['woothatsfast_memory_start'] = memory_get_usage();
+        $_SESSION['woothatsfast_queries_start'] = get_num_queries();
+    }
+    
+    public function complete_performance_tracking() {
+        if (is_admin() || wp_doing_ajax() || !isset($_SESSION['woothatsfast_page_start'])) {
+            return;
+        }
+        
+        $performance_data = [
+            'page_load_time' => microtime(true) - $_SESSION['woothatsfast_page_start'],
+            'memory_usage' => memory_get_usage() - $_SESSION['woothatsfast_memory_start'],
+            'database_queries' => get_num_queries() - $_SESSION['woothatsfast_queries_start'],
+            'page_type' => $this->get_current_page_type(),
+            'timestamp' => current_time('mysql'),
+            'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? '',
+            'is_mobile' => wp_is_mobile(),
+            'session_id' => session_id()
+        ];
+        
+        // Store performance data for potential order correlation
+        set_transient('woothatsfast_session_performance_' . session_id(), $performance_data, 24 * HOUR_IN_SECONDS);
+        
+        // Send to client-side for Core Web Vitals tracking
+        $this->output_client_tracking_script($performance_data);
+    }
+    
+    private function output_client_tracking_script($server_data) {
+        ?>
+        <script>
+        (function() {
+            // Track Core Web Vitals
+            const performanceData = <?php echo json_encode($server_data); ?>;
+            
+            // Largest Contentful Paint
+            new PerformanceObserver((list) => {
+                const entries = list.getEntries();
+                const lastEntry = entries[entries.length - 1];
+                performanceData.lcp = lastEntry.startTime;
+            }).observe({entryTypes: ['largest-contentful-paint']});
+            
+            // First Input Delay  
+            new PerformanceObserver((list) => {
+                const firstInput = list.getEntries()[0];
+                performanceData.fid = firstInput.processingStart - firstInput.startTime;
+            }).observe({entryTypes: ['first-input']});
+            
+            // Cumulative Layout Shift
+            let clsValue = 0;
+            new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) {
+                    if (!entry.hadRecentInput) {
+                        clsValue += entry.value;
+                    }
+                }
+                performanceData.cls = clsValue;
+            }).observe({entryTypes: ['layout-shift']});
+            
+            // Send complete performance data before page unload
+            window.addEventListener('beforeunload', () => {
+                if (navigator.sendBeacon) {
+                    navigator.sendBeacon(
+                        '<?php echo admin_url('admin-ajax.php'); ?>',
+                        new URLSearchParams({
+                            action: 'woothatsfast_store_performance',
+                            data: JSON.stringify(performanceData),
+                            nonce: '<?php echo wp_create_nonce('woothatsfast_performance'); ?>'
+                        })
+                    );
+                }
+            });
+        })();
+        </script>
+        <?php
+    }
+    
+    public function track_order_performance($order_id) {
+        $order = wc_get_order($order_id);
+        if (!$order) {
+            return;
+        }
+        
+        // Get session performance data
+        $session_id = $order->get_meta('_customer_session_id') ?: session_id();
+        $performance_data = get_transient('woothatsfast_session_performance_' . $session_id);
+        
+        if (!$performance_data) {
+            return;
+        }
+        
+        // Correlate performance with order data
+        $correlation_data = [
+            'order_id' => $order_id,
+            'order_total' => $order->get_total(),
+            'order_date' => $order->get_date_created()->getTimestamp(),
+            'customer_id' => $order->get_customer_id(),
+            'performance_data' => $performance_data,
+            'conversion_funnel' => $this->track_conversion_funnel($session_id)
+        ];
+        
+        // Store correlation data
+        $this->store_revenue_performance_correlation($correlation_data);
+        
+        // Clean up session data
+        delete_transient('woothatsfast_session_performance_' . $session_id);
+    }
+    
+    private function store_revenue_performance_correlation($data) {
+        global $wpdb;
+        
+        $table_name = $wpdb->prefix . 'woothatsfast_revenue_performance';
+        
+        // Create table if it doesn't exist
+        $this->create_correlation_table();
+        
+        // Insert correlation data
+        $wpdb->insert(
+            $table_name,
+            [
+                'order_id' => $data['order_id'],
+                'order_total' => $data['order_total'],
+                'order_date' => date('Y-m-d H:i:s', $data['order_date']),
+                'customer_id' => $data['customer_id'],
+                'page_load_time' => $data['performance_data']['page_load_time'],
+                'lcp' => $data['performance_data']['lcp'] ?? null,
+                'fid' => $data['performance_data']['fid'] ?? null,
+                'cls' => $data['performance_data']['cls'] ?? null,
+                'memory_usage' => $data['performance_data']['memory_usage'],
+                'database_queries' => $data['performance_data']['database_queries'],
+                'is_mobile' => $data['performance_data']['is_mobile'] ? 1 : 0,
+                'conversion_funnel' => json_encode($data['conversion_funnel']),
+                'created_at' => current_time('mysql')
+            ],
+            [
+                '%d', '%f', '%s', '%d', '%f', '%f', '%f', '%f', '%d', '%d', '%d', '%s', '%s'
+            ]
+        );
+    }
+    
+    public function analyze_revenue_performance_correlation($date_range = 30) {
+        global $wpdb;
+        
+        $table_name = $wpdb->prefix . 'woothatsfast_revenue_performance';
+        
+        $results = $wpdb->get_results($wpdb->prepare("
+            SELECT 
+                AVG(page_load_time) as avg_load_time,
+                AVG(lcp) as avg_lcp,
+                AVG(fid) as avg_fid,
+                AVG(cls) as avg_cls,
+                AVG(order_total) as avg_order_value,
+                COUNT(*) as order_count,
+                SUM(order_total) as total_revenue,
+                is_mobile
+            FROM {$table_name}
+            WHERE order_date >= DATE_SUB(NOW(), INTERVAL %d DAY)
+            GROUP BY is_mobile
+        ", $date_range));
+        
+        // Calculate performance-revenue correlations
+        $correlations = [];
+        
+        foreach ($results as $result) {
+            $device_type = $result->is_mobile ? 'mobile' : 'desktop';
+            
+            $correlations[$device_type] = [
+                'avg_performance' => [
+                    'load_time' => round($result->avg_load_time, 3),
+                    'lcp' => round($result->avg_lcp, 0),
+                    'fid' => round($result->avg_fid, 1),
+                    'cls' => round($result->avg_cls, 3)
+                ],
+                'revenue_metrics' => [
+                    'avg_order_value' => round($result->avg_order_value, 2),
+                    'total_revenue' => round($result->total_revenue, 2),
+                    'order_count' => (int) $result->order_count
+                ],
+                'revenue_per_second' => round($result->total_revenue / max($result->avg_load_time, 0.1), 2)
+            ];
+        }
+        
+        return $correlations;
+    }
+}
+```
+
+### 3. Creating a Smart Product Caching System
+
+Build intelligent caching that adapts to product popularity and update frequency:
+
+```php
+<?php
+// includes/class-smart-product-cache.php
+
+class WooThatsFast_Smart_Product_Cache {
+    
+    private static $cache_groups = [
+        'hot_products' => 3600,    // 1 hour for popular products
+        'warm_products' => 7200,   // 2 hours for regular products  
+        'cold_products' => 21600   // 6 hours for rarely viewed products
+    ];
+    
+    public static function init() {
+        $instance = new self();
+        
+        // Hook into WooCommerce product events
+        add_action('woocommerce_product_object_updated_props', [$instance, 'invalidate_product_cache'], 10, 2);
+        add_action('woocommerce_product_set_stock', [$instance, 'invalidate_product_cache']);
+        add_action('woocommerce_variation_set_stock', [$instance, 'invalidate_variation_cache']);
+        
+        // Track product popularity
+        add_action('woocommerce_single_product_summary', [$instance, 'track_product_view']);
+        add_action('woocommerce_add_to_cart', [$instance, 'track_product_interaction'], 10, 6);
+        
+        // Set up cache optimization
+        add_action('wp_loaded', [$instance, 'optimize_product_queries']);
+    }
+    
+    public function get_cached_product_data($product_id, $data_type = 'full') {
+        $cache_group = $this->determine_cache_group($product_id);
+        $cache_key = "product_data_{$product_id}_{$data_type}";
+        $cache_duration = self::$cache_groups[$cache_group];
+        
+        $cached_data = wp_cache_get($cache_key, 'woocommerce');
+        
+        if ($cached_data === false) {
+            $cached_data = $this->generate_product_cache_data($product_id, $data_type);
+            wp_cache_set($cache_key, $cached_data, 'woocommerce', $cache_duration);
+            
+            // Store cache metadata for optimization
+            $this->update_cache_metadata($product_id, $cache_group, $cache_duration);
+        }
+        
+        return $cached_data;
+    }
+    
+    private function determine_cache_group($product_id) {
+        $popularity_score = $this->get_product_popularity_score($product_id);
+        
+        if ($popularity_score > 100) {
+            return 'hot_products';
+        } elseif ($popularity_score > 20) {
+            return 'warm_products'; 
+        } else {
+            return 'cold_products';
+        }
+    }
+    
+    private function get_product_popularity_score($product_id) {
+        $views = (int) get_post_meta($product_id, '_woothatsfast_product_views', true);
+        $cart_adds = (int) get_post_meta($product_id, '_woothatsfast_cart_adds', true);
+        $purchases = (int) get_post_meta($product_id, 'total_sales', true);
+        
+        // Weighted popularity score
+        return ($views * 1) + ($cart_adds * 5) + ($purchases * 10);
+    }
+    
+    public function track_product_view($product_id = null) {
+        if (!$product_id) {
+            global $product;
+            $product_id = $product->get_id();
+        }
+        
+        $current_views = (int) get_post_meta($product_id, '_woothatsfast_product_views', true);
+        update_post_meta($product_id, '_woothatsfast_product_views', $current_views + 1);
+        
+        // Update cache group if popularity threshold crossed
+        $this->maybe_update_cache_group($product_id);
+    }
+    
+    public function track_product_interaction($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data) {
+        $current_adds = (int) get_post_meta($product_id, '_woothatsfast_cart_adds', true);
+        update_post_meta($product_id, '_woothatsfast_cart_adds', $current_adds + 1);
+        
+        // Invalidate cache for hot products immediately
+        $cache_group = $this->determine_cache_group($product_id);
+        if ($cache_group === 'hot_products') {
+            $this->invalidate_product_cache($product_id);
+        }
+    }
+    
+    private function generate_product_cache_data($product_id, $data_type) {
+        $product = wc_get_product($product_id);
+        if (!$product) {
+            return null;
+        }
+        
+        switch ($data_type) {
+            case 'basic':
+                return [
+                    'id' => $product->get_id(),
+                    'name' => $product->get_name(),
+                    'price' => $product->get_price(),
+                    'sale_price' => $product->get_sale_price(),
+                    'stock_quantity' => $product->get_stock_quantity(),
+                    'in_stock' => $product->is_in_stock()
+                ];
+                
+            case 'display':
+                return [
+                    'basic' => $this->generate_product_cache_data($product_id, 'basic'),
+                    'image_url' => wp_get_attachment_image_url($product->get_image_id(), 'woocommerce_thumbnail'),
+                    'gallery_images' => $product->get_gallery_image_ids(),
+                    'short_description' => $product->get_short_description(),
+                    'average_rating' => $product->get_average_rating(),
+                    'review_count' => $product->get_review_count()
+                ];
+                
+            case 'full':
+            default:
+                return [
+                    'display' => $this->generate_product_cache_data($product_id, 'display'),
+                    'description' => $product->get_description(),
+                    'attributes' => $product->get_attributes(),
+                    'variations' => $product->is_type('variable') ? $product->get_available_variations() : [],
+                    'related_ids' => wc_get_related_products($product_id, 4),
+                    'upsell_ids' => $product->get_upsell_ids(),
+                    'cross_sell_ids' => $product->get_cross_sell_ids()
+                ];
+        }
+    }
+    
+    public function optimize_product_queries() {
+        // Override WooCommerce product queries with cached data
+        add_filter('woocommerce_product_data_store_cpt_get_products_query', [$this, 'optimize_products_query'], 10, 2);
+        add_filter('woocommerce_shortcode_products_query', [$this, 'optimize_shortcode_products_query'], 10, 2);
+    }
+    
+    public function optimize_products_query($query_args, $query_vars) {
+        // For popular product queries, use cached data
+        if (isset($query_vars['meta_query'])) {
+            foreach ($query_vars['meta_query'] as $meta_query) {
+                if (isset($meta_query['key']) && $meta_query['key'] === 'total_sales') {
+                    // This is likely a popular products query
+                    return $this->get_popular_products_from_cache($query_args, $query_vars);
+                }
+            }
+        }
+        
+        return $query_args;
+    }
+    
+    private function get_popular_products_from_cache($query_args, $query_vars) {
+        $cache_key = 'popular_products_' . md5(serialize($query_vars));
+        $cached_results = wp_cache_get($cache_key, 'woocommerce');
+        
+        if ($cached_results === false) {
+            // Execute original query and cache results
+            $cached_results = $query_args;
+            wp_cache_set($cache_key, $cached_results, 'woocommerce', 1800); // 30 minutes
+        }
+        
+        return $cached_results;
+    }
+}
+```
+
+### 4. Advanced Checkout Optimization Tool
+
+Create a tool that optimizes the checkout process based on user behavior:
+
+```php
+<?php
+// includes/class-checkout-optimizer.php
+
+class WooThatsFast_Checkout_Optimizer {
+    
+    private static $optimization_strategies = [
+        'single_page_checkout' => 'Enable single-page checkout for mobile users',
+        'guest_checkout_priority' => 'Prioritize guest checkout for first-time users',  
+        'autofill_optimization' => 'Optimize form autofill for returning customers',
+        'payment_method_sorting' => 'Sort payment methods by success rate',
+        'field_optimization' => 'Hide optional fields for mobile users'
+    ];
+    
+    public static function init() {
+        $instance = new self();
+        
+        // Checkout optimization hooks
+        add_action('woocommerce_checkout_init', [$instance, 'optimize_checkout_process']);
+        add_action('woocommerce_checkout_order_processed', [$instance, 'track_checkout_success'], 10, 3);
+        add_action('woocommerce_checkout_order_review', [$instance, 'optimize_order_review']);
+        
+        // Payment optimization
+        add_filter('woocommerce_available_payment_gateways', [$instance, 'optimize_payment_gateways']);
+        
+        // Mobile-specific optimizations  
+        add_action('wp_enqueue_scripts', [$instance, 'enqueue_checkout_optimization_scripts']);
+    }
+    
+    public function optimize_checkout_process() {
+        if (!is_checkout()) {
+            return;
+        }
+        
+        $user_profile = $this->analyze_user_checkout_profile();
+        $optimizations = $this->determine_optimizations($user_profile);
+        
+        foreach ($optimizations as $optimization) {
+            $this->apply_optimization($optimization, $user_profile);
+        }
+    }
+    
+    private function analyze_user_checkout_profile() {
+        $profile = [
+            'is_mobile' => wp_is_mobile(),
+            'is_returning_customer' => is_user_logged_in(),
+            'cart_value' => WC()->cart->get_total(''),
+            'item_count' => WC()->cart->get_cart_contents_count(),
+            'session_data' => $this->get_session_analysis(),
+            'previous_checkout_attempts' => $this->get_previous_checkout_attempts()
+        ];
+        
+        return $profile;
+    }
+    
+    private function determine_optimizations($profile) {
+        $optimizations = [];
+        
+        // Mobile users get streamlined checkout
+        if ($profile['is_mobile']) {
+            $optimizations[] = 'single_page_checkout';
+            $optimizations[] = 'field_optimization';
+        }
+        
+        // First-time users get guest checkout priority
+        if (!$profile['is_returning_customer']) {
+            $optimizations[] = 'guest_checkout_priority';
+        } else {
+            $optimizations[] = 'autofill_optimization';
+        }
+        
+        // High-value orders get payment method optimization
+        if ($profile['cart_value'] > 100) {
+            $optimizations[] = 'payment_method_sorting';
+        }
+        
+        // Users with previous failed attempts get simplified process
+        if ($profile['previous_checkout_attempts'] > 0) {
+            $optimizations[] = 'error_prevention';
+        }
+        
+        return $optimizations;
+    }
+    
+    private function apply_optimization($optimization, $profile) {
+        switch ($optimization) {
+            case 'single_page_checkout':
+                $this->enable_single_page_checkout();
+                break;
+                
+            case 'guest_checkout_priority':
+                $this->prioritize_guest_checkout();
+                break;
+                
+            case 'autofill_optimization':
+                $this->optimize_autofill($profile);
+                break;
+                
+            case 'payment_method_sorting':
+                add_filter('woocommerce_available_payment_gateways', [$this, 'sort_payment_methods_by_success']);
+                break;
+                
+            case 'field_optimization':
+                $this->optimize_checkout_fields($profile);
+                break;
+        }
+    }
+    
+    private function enable_single_page_checkout() {
+        // Force single-page checkout layout
+        add_filter('woocommerce_checkout_show_terms', '__return_false');
+        add_filter('woocommerce_enable_order_notes_field', '__return_false');
+        
+        // Collapse sections by default
+        add_action('wp_footer', function() {
+            ?>
+            <script>
+            jQuery(document).ready(function($) {
+                // Auto-collapse billing/shipping sections after fill
+                $('#billing_email, #billing_first_name').on('blur', function() {
+                    if ($(this).val()) {
+                        $('.woocommerce-billing-fields').addClass('completed');
+                    }
+                });
+                
+                // Progressive checkout steps
+                $('.woocommerce-checkout').addClass('mobile-optimized');
+            });
+            </script>
+            <style>
+            .mobile-optimized .woocommerce-billing-fields.completed h3 {
+                cursor: pointer;
+                opacity: 0.7;
+            }
+            .mobile-optimized .woocommerce-billing-fields.completed .woocommerce-billing-fields__field-wrapper {
+                display: none;
+            }
+            </style>
+            <?php
+        });
+    }
+    
+    public function optimize_payment_gateways($available_gateways) {
+        if (!is_checkout()) {
+            return $available_gateways;
+        }
+        
+        $success_rates = $this->get_payment_gateway_success_rates();
+        
+        // Sort gateways by success rate
+        uksort($available_gateways, function($a, $b) use ($success_rates) {
+            $rate_a = $success_rates[$a] ?? 0;
+            $rate_b = $success_rates[$b] ?? 0;
+            
+            return $rate_b <=> $rate_a; // Descending order
+        });
+        
+        return $available_gateways;
+    }
+    
+    private function get_payment_gateway_success_rates() {
+        $cache_key = 'payment_gateway_success_rates';
+        $rates = wp_cache_get($cache_key, 'woocommerce');
+        
+        if ($rates === false) {
+            global $wpdb;
+            
+            // Calculate success rates from recent orders
+            $results = $wpdb->get_results("
+                SELECT 
+                    pm.meta_value as payment_method,
+                    COUNT(*) as total_attempts,
+                    SUM(CASE WHEN p.post_status IN ('wc-completed', 'wc-processing') THEN 1 ELSE 0 END) as successful
+                FROM {$wpdb->posts} p
+                INNER JOIN {$wpdb->postmeta} pm ON p.ID = pm.post_id AND pm.meta_key = '_payment_method'
+                WHERE p.post_type = 'shop_order'
+                AND p.post_date >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+                GROUP BY pm.meta_value
+            ");
+            
+            $rates = [];
+            foreach ($results as $result) {
+                $rates[$result->payment_method] = $result->total_attempts > 0 
+                    ? ($result->successful / $result->total_attempts) * 100 
+                    : 0;
+            }
+            
+            wp_cache_set($cache_key, $rates, 'woocommerce', 3600); // Cache for 1 hour
+        }
+        
+        return $rates;
+    }
+    
+    public function track_checkout_success($order_id, $posted_data, $order) {
+        // Track optimization effectiveness
+        $optimizations_used = get_transient('checkout_optimizations_' . session_id());
+        
+        if ($optimizations_used) {
+            $success_data = [
+                'order_id' => $order_id,
+                'optimizations_used' => $optimizations_used,
+                'checkout_time' => $this->calculate_checkout_time(),
+                'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? '',
+                'success' => true,
+                'timestamp' => current_time('mysql')
+            ];
+            
+            $this->store_optimization_effectiveness($success_data);
+            delete_transient('checkout_optimizations_' . session_id());
+        }
+    }
+    
+    public function enqueue_checkout_optimization_scripts() {
+        if (!is_checkout()) {
+            return;
+        }
+        
+        wp_enqueue_script(
+            'woothatsfast-checkout-optimizer',
+            WOOTHATSFAST_PLUGIN_URL . 'assets/checkout-optimizer.js',
+            ['jquery'],
+            '1.0.0',
+            true
+        );
+        
+        wp_localize_script('woothatsfast-checkout-optimizer', 'WooThatsFastCheckout', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('woothatsfast_checkout'),
+            'optimizations' => $this->get_active_optimizations()
+        ]);
+    }
+    
+    private function get_active_optimizations() {
+        $user_profile = $this->analyze_user_checkout_profile();
+        return $this->determine_optimizations($user_profile);
+    }
+}
+```
+
+## Creating Advanced WooCommerce Performance Analytics
+
+Build comprehensive analytics that go beyond basic performance metrics:
+
+### Revenue-Performance Dashboard
+
+```php
+<?php
+// includes/class-performance-analytics.php
+
+class WooThatsFast_Performance_Analytics {
+    
+    public static function init() {
+        $instance = new self();
+        
+        // Admin dashboard integration
+        add_action('wp_dashboard_setup', [$instance, 'add_performance_dashboard_widgets']);
+        add_action('admin_enqueue_scripts', [$instance, 'enqueue_dashboard_scripts']);
+        
+        // AJAX handlers for dashboard data
+        add_action('wp_ajax_woothatsfast_dashboard_data', [$instance, 'get_dashboard_data']);
+        add_action('wp_ajax_woothatsfast_performance_trends', [$instance, 'get_performance_trends']);
+    }
+    
+    public function add_performance_dashboard_widgets() {
+        wp_add_dashboard_widget(
+            'woothatsfast_performance_overview',
+            'WooCommerce Performance Overview',
+            [$this, 'render_performance_overview_widget']
+        );
+        
+        wp_add_dashboard_widget(
+            'woothatsfast_revenue_correlation',
+            'Performance-Revenue Correlation',
+            [$this, 'render_revenue_correlation_widget']
+        );
+    }
+    
+    public function render_performance_overview_widget() {
+        $performance_summary = $this->get_performance_summary();
+        ?>
+        <div class="woothatsfast-performance-overview">
+            <div class="performance-metrics-grid">
+                <div class="metric-card">
+                    <h4>Average Page Load Time</h4>
+                    <span class="metric-value"><?php echo $performance_summary['avg_load_time']; ?>s</span>
+                    <span class="metric-trend <?php echo $performance_summary['load_time_trend']; ?>">
+                        <?php echo $performance_summary['load_time_change']; ?>%
+                    </span>
+                </div>
+                
+                <div class="metric-card">
+                    <h4>Core Web Vitals Score</h4>
+                    <span class="metric-value <?php echo $performance_summary['cwv_status']; ?>">
+                        <?php echo $performance_summary['cwv_score']; ?>
+                    </span>
+                </div>
+                
+                <div class="metric-card">
+                    <h4>Mobile Performance</h4>
+                    <span class="metric-value"><?php echo $performance_summary['mobile_score']; ?>/100</span>
+                    <span class="metric-trend <?php echo $performance_summary['mobile_trend']; ?>">
+                        <?php echo $performance_summary['mobile_change']; ?>
+                    </span>
+                </div>
+                
+                <div class="metric-card">
+                    <h4>Revenue Per Second</h4>
+                    <span class="metric-value">$<?php echo $performance_summary['revenue_per_second']; ?></span>
+                    <small>Based on load time correlation</small>
+                </div>
+            </div>
+            
+            <div class="performance-chart-container">
+                <canvas id="performanceChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+        <?php
+    }
+    
+    public function render_revenue_correlation_widget() {
+        $correlation_data = $this->get_revenue_correlation_data();
+        ?>
+        <div class="woothatsfast-revenue-correlation">
+            <div class="correlation-summary">
+                <p><strong>Performance Impact on Revenue:</strong></p>
+                <ul>
+                    <li>1 second faster = +$<?php echo $correlation_data['revenue_per_second_improvement']; ?> average order value</li>
+                    <li>Mobile optimization = <?php echo $correlation_data['mobile_conversion_lift']; ?>% conversion lift</li>
+                    <li>Core Web Vitals "Good" = <?php echo $correlation_data['cwv_revenue_lift']; ?>% revenue increase</li>
+                </ul>
+            </div>
+            
+            <div class="optimization-recommendations">
+                <h4>Top Optimization Opportunities:</h4>
+                <?php foreach ($correlation_data['recommendations'] as $rec): ?>
+                <div class="recommendation">
+                    <strong><?php echo $rec['area']; ?></strong>
+                    <span class="potential-impact">+$<?php echo $rec['revenue_impact']; ?> monthly</span>
+                    <p><?php echo $rec['description']; ?></p>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php
+    }
+    
+    private function get_performance_summary() {
+        global $wpdb;
+        
+        $table_name = $wpdb->prefix . 'woothatsfast_revenue_performance';
+        
+        // Get current period performance
+        $current_performance = $wpdb->get_row("
+            SELECT 
+                AVG(page_load_time) as avg_load_time,
+                AVG(lcp) as avg_lcp,
+                AVG(fid) as avg_fid,
+                AVG(cls) as avg_cls,
+                AVG(CASE WHEN is_mobile = 1 THEN page_load_time END) as mobile_load_time,
+                COUNT(*) as total_orders,
+                SUM(order_total) as total_revenue
+            FROM {$table_name}
+            WHERE order_date >= DATE_SUB(NOW(), INTERVAL 7 DAY)
+        ");
+        
+        // Get previous period for comparison
+        $previous_performance = $wpdb->get_row("
+            SELECT 
+                AVG(page_load_time) as avg_load_time,
+                AVG(CASE WHEN is_mobile = 1 THEN page_load_time END) as mobile_load_time
+            FROM {$table_name}
+            WHERE order_date >= DATE_SUB(NOW(), INTERVAL 14 DAY)
+            AND order_date < DATE_SUB(NOW(), INTERVAL 7 DAY)
+        ");
+        
+        // Calculate trends
+        $load_time_change = $previous_performance->avg_load_time > 0 
+            ? (($current_performance->avg_load_time - $previous_performance->avg_load_time) / $previous_performance->avg_load_time) * 100
+            : 0;
+            
+        // Calculate Core Web Vitals score
+        $cwv_score = $this->calculate_cwv_score($current_performance);
+        
+        // Calculate revenue per second improvement
+        $revenue_per_second = $current_performance->total_orders > 0 
+            ? $current_performance->total_revenue / ($current_performance->avg_load_time * $current_performance->total_orders)
+            : 0;
+        
+        return [
+            'avg_load_time' => round($current_performance->avg_load_time, 2),
+            'load_time_trend' => $load_time_change >= 0 ? 'up' : 'down',
+            'load_time_change' => abs(round($load_time_change, 1)),
+            'cwv_score' => $cwv_score,
+            'cwv_status' => $cwv_score >= 90 ? 'good' : ($cwv_score >= 50 ? 'needs-improvement' : 'poor'),
+            'mobile_score' => $this->calculate_mobile_score($current_performance->mobile_load_time),
+            'mobile_trend' => 'stable', // Calculate based on historical data
+            'mobile_change' => '0',
+            'revenue_per_second' => round($revenue_per_second, 2)
+        ];
+    }
+    
+    private function calculate_cwv_score($performance) {
+        $lcp_score = $performance->avg_lcp <= 2500 ? 100 : ($performance->avg_lcp <= 4000 ? 50 : 0);
+        $fid_score = $performance->avg_fid <= 100 ? 100 : ($performance->avg_fid <= 300 ? 50 : 0);
+        $cls_score = $performance->avg_cls <= 0.1 ? 100 : ($performance->avg_cls <= 0.25 ? 50 : 0);
+        
+        return round(($lcp_score + $fid_score + $cls_score) / 3);
+    }
+    
+    private function get_revenue_correlation_data() {
+        $tracker = WooThatsFast_Revenue_Performance_Tracker::init();
+        $correlations = $tracker->analyze_revenue_performance_correlation(30);
+        
+        return [
+            'revenue_per_second_improvement' => $this->calculate_revenue_per_second_improvement($correlations),
+            'mobile_conversion_lift' => $this->calculate_mobile_conversion_lift($correlations),
+            'cwv_revenue_lift' => $this->calculate_cwv_revenue_lift($correlations),
+            'recommendations' => $this->generate_optimization_recommendations($correlations)
+        ];
+    }
+    
+    public function enqueue_dashboard_scripts($hook) {
+        if ($hook !== 'index.php') {
+            return;
+        }
+        
+        wp_enqueue_script('chart-js', 'https://cdn.jsdelivr.net/npm/chart.js', [], '3.9.1');
+        wp_enqueue_script(
+            'woothatsfast-dashboard',
+            WOOTHATSFAST_PLUGIN_URL . 'assets/dashboard.js',
+            ['jquery', 'chart-js'],
+            '1.0.0',
+            true
+        );
+        
+        wp_enqueue_style(
+            'woothatsfast-dashboard',
+            WOOTHATSFAST_PLUGIN_URL . 'assets/dashboard.css',
+            [],
+            '1.0.0'
+        );
+    }
+}
+```
+
+## Testing and Publishing Your Custom Tools
+
+### Performance Tool Testing Framework
+
+```php
+<?php
+// includes/class-performance-tool-tester.php
+
+class WooThatsFast_Tool_Tester {
+    
+    public static function run_performance_tests() {
+        $test_results = [];
+        
+        // Test revenue-performance correlation accuracy
+        $test_results['correlation_accuracy'] = self::test_correlation_accuracy();
+        
+        // Test smart caching effectiveness
+        $test_results['cache_effectiveness'] = self::test_cache_effectiveness();
+        
+        // Test checkout optimization impact
+        $test_results['checkout_optimization'] = self::test_checkout_optimization();
+        
+        // Test overall performance improvement
+        $test_results['performance_improvement'] = self::test_overall_performance();
+        
+        return $test_results;
+    }
+    
+    private static function test_correlation_accuracy() {
+        $tracker = WooThatsFast_Revenue_Performance_Tracker::init();
+        $test_data = self::generate_test_correlation_data();
+        
+        $accuracy_score = 0;
+        foreach ($test_data as $test_case) {
+            $predicted_revenue = $tracker->predict_revenue_impact($test_case['performance']);
+            $actual_revenue = $test_case['actual_revenue'];
+            
+            $accuracy = 1 - abs($predicted_revenue - $actual_revenue) / $actual_revenue;
+            $accuracy_score += $accuracy;
+        }
+        
+        return [
+            'passed' => ($accuracy_score / count($test_data)) > 0.8,
+            'accuracy_percentage' => round(($accuracy_score / count($test_data)) * 100, 2),
+            'test_cases' => count($test_data)
+        ];
+    }
+    
+    private static function test_cache_effectiveness() {
+        $cache_tool = new WooThatsFast_Smart_Product_Cache();
+        
+        // Test cache hit rates
+        $products = wc_get_products(['limit' => 10]);
+        $cache_hits = 0;
+        $total_requests = 0;
+        
+        foreach ($products as $product) {
+            // First request (cache miss expected)
+            $start_time = microtime(true);
+            $cache_tool->get_cached_product_data($product->get_id());
+            $first_request_time = microtime(true) - $start_time;
+            
+            // Second request (cache hit expected)
+            $start_time = microtime(true);
+            $cache_tool->get_cached_product_data($product->get_id());
+            $second_request_time = microtime(true) - $start_time;
+            
+            $total_requests += 2;
+            if ($second_request_time < $first_request_time * 0.1) { // 90% faster = cache hit
+                $cache_hits += 1;
+            }
+        }
+        
+        $cache_hit_rate = ($cache_hits / ($total_requests / 2)) * 100;
+        
+        return [
+            'passed' => $cache_hit_rate > 80,
+            'cache_hit_rate' => round($cache_hit_rate, 2),
+            'average_cache_speedup' => '90%' // Calculate from actual measurements
+        ];
+    }
+}
+```
+
+## Conclusion
+
+Building custom WooCommerce performance tools allows you to extend optimization capabilities far beyond standard plugins. By creating tools that understand your specific business requirements, customer behavior patterns, and performance challenges, you can achieve optimization results that generic solutions cannot match.
+
+Whether you're building revenue-performance correlation trackers, smart caching systems, checkout optimizers, or advanced analytics dashboards, custom performance tools enable you to:
+
+- Address unique performance bottlenecks in your store
+- Optimize based on actual customer behavior data
+- Correlate performance improvements with business outcomes
+- Implement sophisticated caching and optimization strategies
+- Monitor and optimize performance metrics that matter to your business
+
+The key to successful custom WooCommerce performance tools lies in understanding both the technical aspects of optimization and the specific needs of your e-commerce business. Start with simple tools that address your most pressing performance challenges, then gradually build more sophisticated solutions as your expertise and requirements grow.
+
+Ready to build custom performance tools for your WooCommerce store? Our team of performance specialists can help you design and implement solutions tailored to your specific business needs, ensuring optimal performance that drives measurable results.

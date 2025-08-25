@@ -1,0 +1,11 @@
+---
+import { ElementorConversionSection } from '@/components/sections/elementor-conversion-section';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+
+const title = 'Elementor to Gutenberg Conversion | WooThatsFast';
+const description = 'Convert heavy Elementor sites to high-performance Gutenberg builds. Eliminate page builder bloat and achieve 70%+ faster loading speeds with native WordPress blocks.';
+---
+
+<DefaultLayout title={title} description={description}>
+  <ElementorConversionSection client:load />
+</DefaultLayout>

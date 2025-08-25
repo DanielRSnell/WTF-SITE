@@ -1,0 +1,16 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+import { ProductCompatibility } from '@/components/sections/product-compatibility';
+import { ProductCta } from '@/components/sections/product-cta';
+import { ProductFeatures } from '@/components/sections/product-features';
+import { ProductHero } from '@/components/sections/product-hero';
+import DefaultLayout from '@/layouts/DefaultLayout.astro';
+---
+
+<DefaultLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <ProductHero client:load />
+  <ProductFeatures client:load />
+  <ProductCompatibility client:load />
+  <ProductCta client:load />
+</DefaultLayout>
