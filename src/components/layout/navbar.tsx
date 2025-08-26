@@ -193,41 +193,10 @@ function Navbar({ currentPage }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { isAtMost } = useMediaQuery();
   const isMobile = isAtMost('md');
-  const [theme, setTheme] = React.useState<'light' | 'dark'>('light');
+  // Theme is always dark, so no need to track theme state
+  const theme = 'dark';
 
   const isMenuColorInverted = isMenuOpen && isMobile;
-
-  React.useEffect(() => {
-    // Get initial theme from localStorage, default to 'light' if none exists
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    setTheme(savedTheme || 'light');
-
-    // Listen for theme changes
-    const handleStorageChange = () => {
-      const newTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-      if (newTheme) {
-        setTheme(newTheme);
-      }
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-
-    // Listen for direct DOM class changes (for immediate updates)
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains('dark');
-      setTheme(isDark ? 'dark' : 'light');
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      observer.disconnect();
-    };
-  }, []);
 
   React.useEffect(() => {
     if (isMenuOpen && isMobile) {
