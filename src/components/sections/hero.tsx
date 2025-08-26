@@ -82,14 +82,99 @@ wp_cache_set('wc_products_' . $id, $data, 'woocommerce');`}</p>
         </div>
       </div>
       <div className="container">
-        <div className="bordered-div-padding flex items-center justify-center border">
-          <img
-            src="/images/landing/hero.webp"
-            alt="Hero Image"
-            width={1320}
-            height={743}
-            className="rounded-lg mask-b-from-50% mask-b-to-90%"
-          />
+        <div className="bordered-div-padding border">
+          {/* Performance Metrics Dashboard */}
+          <div className="space-y-8">
+            {/* Before/After Comparison */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Before - Slow Performance */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 text-sm font-medium text-red-600 dark:text-red-400">
+                  <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                  Before: Slow WooCommerce
+                </div>
+                <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-lg p-4 space-y-3">
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <div className="text-2xl font-weight-display font-bold text-red-600 dark:text-red-400">8.2s</div>
+                      <div className="text-muted-foreground">Load Time</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-weight-display font-bold text-red-600 dark:text-red-400">15</div>
+                      <div className="text-muted-foreground">Core Web Vitals</div>
+                    </div>
+                  </div>
+                  <div className="w-full bg-muted/50 rounded-full h-2">
+                    <div className="bg-red-500 h-2 rounded-full" style={{ width: '15%' }}></div>
+                  </div>
+                  <div className="text-xs text-muted-foreground">Poor Performance - Losing Customers</div>
+                </div>
+              </div>
+
+              {/* After - Fast Performance */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 text-sm font-medium text-green-600 dark:text-green-400">
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  After: WooThatsFast Optimized
+                </div>
+                <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg p-4 space-y-3">
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <div className="text-2xl font-weight-display font-bold text-green-600 dark:text-green-400">1.2s</div>
+                      <div className="text-muted-foreground">Load Time</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-weight-display font-bold text-green-600 dark:text-green-400">94</div>
+                      <div className="text-muted-foreground">Core Web Vitals</div>
+                    </div>
+                  </div>
+                  <div className="w-full bg-muted/50 rounded-full h-2">
+                    <div className="bg-green-500 h-2 rounded-full" style={{ width: '94%' }}></div>
+                  </div>
+                  <div className="text-xs text-muted-foreground">Excellent Performance - Happy Customers</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Key Metrics Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="text-center p-4 border rounded-lg">
+                <div className="text-3xl font-weight-display font-bold text-secondary">83%</div>
+                <div className="text-sm text-muted-foreground">Faster Loading</div>
+              </div>
+              <div className="text-center p-4 border rounded-lg">
+                <div className="text-3xl font-weight-display font-bold text-secondary">127%</div>
+                <div className="text-sm text-muted-foreground">More Conversions</div>
+              </div>
+              <div className="text-center p-4 border rounded-lg">
+                <div className="text-3xl font-weight-display font-bold text-secondary">$158K</div>
+                <div className="text-sm text-muted-foreground">Revenue Increase</div>
+              </div>
+            </div>
+
+            {/* WooCommerce Features */}
+            <div className="bg-muted/30 rounded-lg p-6">
+              <h3 className="text-lg font-weight-display font-semibold mb-4 text-center">WooCommerce-Specific Optimizations</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="flex items-center gap-2 text-sm">
+                  <Zap className="size-4 text-secondary" />
+                  <span>Database Optimization</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <Shield className="size-4 text-secondary" />
+                  <span>Redis Caching</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <Users className="size-4 text-secondary" />
+                  <span>Admin Speed Boost</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <ArrowRight className="size-4 text-secondary" />
+                  <span>Checkout Optimization</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
