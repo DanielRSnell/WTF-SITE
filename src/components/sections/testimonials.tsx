@@ -30,7 +30,7 @@ export function Testimonials() {
       {/* Testimonial */}
       <blockquote className="bordered-div-padding flex flex-col justify-between gap-8 border border-t-0 md:flex-row">
         <p className="lg:text-4xxl font-weight-display flex-7 text-2xl leading-snug tracking-tighter md:text-3xl">
-          WooThatsFast transformed our welding table store. Our customers can now browse and order seamlessly, even with heavy traffic and large catalogs.
+          <span className="bg-gradient-to-r from-secondary/90 via-purple-500/90 to-secondary/90 bg-clip-text text-transparent font-bold">WooThatsFast</span> transformed our welding table store. Our customers can now browse and order seamlessly, even with heavy traffic and large catalogs.
         </p>
 
         <footer className="flex-6 self-end">
