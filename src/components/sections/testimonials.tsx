@@ -30,7 +30,7 @@ export function Testimonials() {
       {/* Testimonial */}
       <blockquote className="bordered-div-padding flex flex-col justify-between gap-8 border border-t-0 md:flex-row">
         <p className="lg:text-4xxl font-weight-display flex-7 text-2xl leading-snug tracking-tighter md:text-3xl">
-          The custom metal fabrication business needed speed that matched our craftsmanship. WooThatsFast delivered exactly that - our site performs as precisely as our metalwork.
+          WooThatsFast transformed our welding table store. Our customers can now browse and order seamlessly, even with heavy traffic and large catalogs.
         </p>
 
         <footer className="flex-6 self-end">
@@ -43,7 +43,7 @@ export function Testimonials() {
               className="rounded-full"
             />
             <cite className="text-sm font-medium not-italic md:text-lg lg:text-xl">
-              John P, Owner at TexasMetalWorks
+              John P, Founder at TexasMetalWorks
             </cite>
           </div>
         </footer>
