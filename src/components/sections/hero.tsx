@@ -152,25 +152,78 @@ wp_cache_set('wc_products_' . $id, $data, 'woocommerce');`}</p>
               </div>
             </div>
 
-            {/* WooCommerce Features */}
-            <div className="bg-muted/30 rounded-lg p-6">
-              <h3 className="text-lg font-weight-display font-semibold mb-4 text-center">WooCommerce-Specific Optimizations</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="flex items-center gap-2 text-sm">
-                  <Zap className="size-4 text-secondary" />
-                  <span>Database Optimization</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <Shield className="size-4 text-secondary" />
-                  <span>Redis Caching</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <Users className="size-4 text-secondary" />
-                  <span>Admin Speed Boost</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <ArrowRight className="size-4 text-secondary" />
-                  <span>Checkout Optimization</span>
+            {/* Optimization Timeline */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-weight-display font-semibold text-center">WooCommerce Optimization Process</h3>
+              
+              <div className="relative">
+                {/* Progress line */}
+                <div className="absolute top-6 left-0 w-full h-0.5 bg-muted"></div>
+                <div 
+                  className="absolute top-6 left-0 h-0.5 bg-secondary transition-all duration-1000 ease-out"
+                  style={{ width: '100%' }}
+                ></div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {/* Phase 1 */}
+                  <div className="relative">
+                    <div className="absolute top-4 -left-2 z-10 flex size-4 items-center justify-center rounded-full bg-background border-2 border-secondary">
+                      <div className="size-2 rounded-full bg-secondary"></div>
+                    </div>
+                    <div className="pl-6 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <Zap className="size-4 text-secondary" />
+                        <span className="text-sm font-semibold">Phase 1</span>
+                      </div>
+                      <h4 className="font-medium text-sm">Database Optimization</h4>
+                      <p className="text-xs text-muted-foreground">Clean legacy tables, optimize queries</p>
+                    </div>
+                  </div>
+
+                  {/* Phase 2 */}
+                  <div className="relative">
+                    <div className="absolute top-4 -left-2 z-10 flex size-4 items-center justify-center rounded-full bg-background border-2 border-secondary">
+                      <div className="size-2 rounded-full bg-secondary"></div>
+                    </div>
+                    <div className="pl-6 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <Shield className="size-4 text-secondary" />
+                        <span className="text-sm font-semibold">Phase 2</span>
+                      </div>
+                      <h4 className="font-medium text-sm">Redis Caching</h4>
+                      <p className="text-xs text-muted-foreground">Object caching, page optimization</p>
+                    </div>
+                  </div>
+
+                  {/* Phase 3 */}
+                  <div className="relative">
+                    <div className="absolute top-4 -left-2 z-10 flex size-4 items-center justify-center rounded-full bg-background border-2 border-secondary">
+                      <div className="size-2 rounded-full bg-secondary"></div>
+                    </div>
+                    <div className="pl-6 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <Users className="size-4 text-secondary" />
+                        <span className="text-sm font-semibold">Phase 3</span>
+                      </div>
+                      <h4 className="font-medium text-sm">Admin Speed Boost</h4>
+                      <p className="text-xs text-muted-foreground">Dashboard optimization, UI improvements</p>
+                    </div>
+                  </div>
+
+                  {/* Phase 4 */}
+                  <div className="relative">
+                    <div className="absolute top-4 -left-2 z-10 flex size-4 items-center justify-center rounded-full bg-background border-2 border-secondary">
+                      <div className="size-2 rounded-full bg-secondary"></div>
+                    </div>
+                    <div className="pl-6 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <ArrowRight className="size-4 text-secondary" />
+                        <span className="text-sm font-semibold">Phase 4</span>
+                      </div>
+                      <h4 className="font-medium text-sm">Checkout Optimization</h4>
+                      <p className="text-xs text-muted-foreground">Payment flow, conversion optimization</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
