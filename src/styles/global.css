@@ -182,10 +182,16 @@
   }
   
   /* Ensure containers clip their overflowing decorative elements */
-  .container,
-  section,
-  main {
+  /* Only clip overflow for sections with decorative elements, not all sections */
+  section:has([class*="left-full"]),
+  section:has([class*="right-full"]),
+  section:has([class*="absolute"]) {
     overflow-x: clip;
+  }
+  
+  /* Don't clip the contact section specifically */
+  .contact-section {
+    overflow-x: visible;
   }
   
   /* Specific fix for decorative elements */

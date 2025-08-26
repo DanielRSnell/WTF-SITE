@@ -2,6 +2,7 @@ import { Mail, Zap, Phone, Calendar } from 'lucide-react';
 
 import { PlusSigns } from '@/components/icons/plus-signs';
 import { Meteors } from '@/components/magicui/meteors';
+import { PerformanceAnalysisInterface } from '@/components/ui/performance-analysis-interface';
 
 const contactOptions = [
   {
@@ -32,7 +33,7 @@ const contactOptions = [
 
 export function ContactSection() {
   return (
-    <section className="container">
+    <section className="container contact-section">
       <div className="hidden border border-t-0 p-7.5 md:block" />
 
       <div className="grid grid-cols-1 items-center divide-y border-x md:grid-cols-2 md:divide-x md:divide-y-0">
@@ -66,20 +67,9 @@ export function ContactSection() {
           ))}
         </div>
 
-        {/* Right Side - Chat Example */}
-        <div className="bordered-div-padding flex flex-col gap-4 mask-b-from-60% mask-b-to-95%">
-          <img
-            src="/images/contact/chat-1.webp"
-            alt="Chat example"
-            width={620}
-            height={112}
-          />
-          <img
-            src="/images/contact/chat-2.webp"
-            alt="Chat example"
-            width={620}
-            height={240}
-          />
+        {/* Right Side - Performance Analysis Interface */}
+        <div className="bordered-div-padding mask-b-from-60% mask-b-to-95%">
+          <PerformanceAnalysisInterface />
         </div>
       </div>
       <div className="relative hidden overflow-hidden border-x border-t p-20 md:block">
