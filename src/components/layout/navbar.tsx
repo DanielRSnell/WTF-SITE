@@ -17,7 +17,7 @@ import {
   Code,
   Blocks,
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Phone } from 'lucide-react';
 
 import { ThemeToggle } from '@/components/elements/theme-toggle';
