@@ -76,6 +76,13 @@ const navigationItems: NavItem[] = [
         title: 'Performance & Support',
         items: [
           {
+            title: 'Performance Optimization Journey',
+            href: '/performance-optimization',
+            description: 'Complete WooCommerce transformation process',
+            icon: BarChart3,
+            isHighlighted: true,
+          },
+          {
             title: 'Website Optimization',
             href: '/services/optimization',
             description: 'Frontend optimization for existing WooCommerce sites',
