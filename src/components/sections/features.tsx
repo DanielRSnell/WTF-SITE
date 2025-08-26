@@ -2,6 +2,8 @@ import { Server, Zap, ShieldCheck, Code } from 'lucide-react';
 
 import { PlusSigns } from '@/components/icons/plus-signs';
 import { cn } from '@/lib/utils';
+import { AnimatedDashboard } from '@/components/ui/animated-dashboard';
+import { ServerControlPanel } from '@/components/ui/server-control-panel';
 const features = [
   {
     icon: Zap,
@@ -16,14 +18,7 @@ const features = [
     subDescription:
       'Optimized Redis caching, NGINX configurations, and database tuning specifically for WooCommerce. Your customers get sub-2-second page loads.',
     className: '!pb-0',
-    images: [
-      {
-        src: '/images/landing/feature-1.webp',
-        alt: 'WooCommerce Performance Dashboard',
-        width: 700,
-        height: 320,
-      },
-    ],
+    hasAnimatedDashboard: true,
   },
   {
     icon: Server,
@@ -32,26 +27,7 @@ const features = [
     subDescription:
       'No managed hosting restrictions or markups. Complete root access with expert WooCommerce developers handling the technical complexity.',
     className: '!pb-0',
-    images: [
-      {
-        src: '/images/landing/feature-2-1.webp',
-        alt: 'Server Management Dashboard',
-        width: 620,
-        height: 108,
-      },
-      {
-        src: '/images/landing/feature-2-2.webp',
-        alt: 'Performance Monitoring',
-        width: 620,
-        height: 108,
-      },
-      {
-        src: '/images/landing/feature-2-3.webp',
-        alt: 'Security Dashboard',
-        width: 620,
-        height: 108,
-      },
-    ],
+    hasServerControlPanel: true,
   },
   {
     icon: ShieldCheck,
@@ -102,6 +78,18 @@ export function Features() {
                 {feature.subDescription}
               </p>
             </div>
+
+            {feature.hasAnimatedDashboard && (
+              <div className="mask-b-from-30% mask-b-to-95%">
+                <AnimatedDashboard />
+              </div>
+            )}
+
+            {feature.hasServerControlPanel && (
+              <div className="mask-b-from-30% mask-b-to-95%">
+                <ServerControlPanel />
+              </div>
+            )}
 
             {feature.images && (
               <div className="flex flex-col gap-4 mask-b-from-30% mask-b-to-95%">

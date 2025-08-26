@@ -1,10 +1,12 @@
 'use client';
 
 import { ArrowRight, Zap, Shield, Users } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
 import { MovingBorder } from '@/components/ui/moving-border';
 import { cn } from '@/lib/utils';
+import { Timeline11 } from '@/components/timeline11';
 
 export function Hero() {
   return (
@@ -86,147 +88,118 @@ wp_cache_set('wc_products_' . $id, $data, 'woocommerce');`}</p>
           {/* Performance Metrics Dashboard */}
           <div className="space-y-8">
             {/* Before/After Comparison */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Before - Slow Performance */}
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-sm font-medium text-red-600 dark:text-red-400">
-                  <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                <div className="flex items-center gap-3 text-base font-semibold text-red-600 dark:text-red-400">
+                  <div className="w-4 h-4 bg-red-500 rounded-full animate-pulse shadow-lg shadow-red-500/30"></div>
                   Before: Slow WooCommerce
                 </div>
-                <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-lg p-4 space-y-3">
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <div className="text-2xl font-weight-display font-bold text-red-600 dark:text-red-400">8.2s</div>
-                      <div className="text-muted-foreground">Load Time</div>
+                <div className="bg-gradient-to-br from-red-50 via-red-50/80 to-red-100/60 dark:from-red-950/30 dark:via-red-950/20 dark:to-red-900/20 border border-red-200/60 dark:border-red-800/40 rounded-xl p-6 space-y-4 backdrop-blur-sm shadow-lg shadow-red-500/5">
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <motion.div 
+                        className="text-4xl font-weight-display font-bold text-red-600 dark:text-red-400 tracking-tight"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        viewport={{ once: true }}
+                      >
+                        8.2s
+                      </motion.div>
+                      <div className="text-sm font-medium text-red-700/70 dark:text-red-300/70">Load Time</div>
                     </div>
-                    <div>
-                      <div className="text-2xl font-weight-display font-bold text-red-600 dark:text-red-400">15</div>
-                      <div className="text-muted-foreground">Core Web Vitals</div>
+                    <div className="space-y-2">
+                      <motion.div 
+                        className="text-4xl font-weight-display font-bold text-red-600 dark:text-red-400 tracking-tight"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        viewport={{ once: true }}
+                      >
+                        15
+                      </motion.div>
+                      <div className="text-sm font-medium text-red-700/70 dark:text-red-300/70">Core Web Vitals</div>
                     </div>
                   </div>
-                  <div className="w-full bg-muted/50 rounded-full h-2">
-                    <div className="bg-red-500 h-2 rounded-full" style={{ width: '15%' }}></div>
+                  <div className="w-full bg-red-200/30 dark:bg-red-900/30 rounded-full h-3 overflow-hidden">
+                    <motion.div 
+                      className="bg-gradient-to-r from-red-500 to-red-600 h-3 rounded-full shadow-inner"
+                      initial={{ width: '0%' }}
+                      whileInView={{ width: '15%' }}
+                      transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+                      viewport={{ once: true }}
+                    />
                   </div>
-                  <div className="text-xs text-muted-foreground">Poor Performance - Losing Customers</div>
+                  <div className="text-sm font-medium text-red-700/80 dark:text-red-300/80">Poor Performance - Losing Customers</div>
                 </div>
               </div>
 
               {/* After - Fast Performance */}
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-sm font-medium text-green-600 dark:text-green-400">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <div className="flex items-center gap-3 text-base font-semibold text-green-600 dark:text-green-400">
+                  <div className="w-4 h-4 bg-green-500 rounded-full shadow-lg shadow-green-500/30"></div>
                   After: WooThatsFast Optimized
                 </div>
-                <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg p-4 space-y-3">
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <div className="text-2xl font-weight-display font-bold text-green-600 dark:text-green-400">1.2s</div>
-                      <div className="text-muted-foreground">Load Time</div>
+                <div className="bg-gradient-to-br from-green-50 via-green-50/80 to-green-100/60 dark:from-green-950/30 dark:via-green-950/20 dark:to-green-900/20 border border-green-200/60 dark:border-green-800/40 rounded-xl p-6 space-y-4 backdrop-blur-sm shadow-lg shadow-green-500/5">
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <motion.div 
+                        className="text-4xl font-weight-display font-bold text-green-600 dark:text-green-400 tracking-tight"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                        viewport={{ once: true }}
+                      >
+                        1.2s
+                      </motion.div>
+                      <div className="text-sm font-medium text-green-700/70 dark:text-green-300/70">Load Time</div>
                     </div>
-                    <div>
-                      <div className="text-2xl font-weight-display font-bold text-green-600 dark:text-green-400">94</div>
-                      <div className="text-muted-foreground">Core Web Vitals</div>
+                    <div className="space-y-2">
+                      <motion.div 
+                        className="text-4xl font-weight-display font-bold text-green-600 dark:text-green-400 tracking-tight"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.8 }}
+                        viewport={{ once: true }}
+                      >
+                        94
+                      </motion.div>
+                      <div className="text-sm font-medium text-green-700/70 dark:text-green-300/70">Core Web Vitals</div>
                     </div>
                   </div>
-                  <div className="w-full bg-muted/50 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{ width: '94%' }}></div>
+                  <div className="w-full bg-green-200/30 dark:bg-green-900/30 rounded-full h-3 overflow-hidden">
+                    <motion.div 
+                      className="bg-gradient-to-r from-green-500 to-green-600 h-3 rounded-full shadow-inner"
+                      initial={{ width: '0%' }}
+                      whileInView={{ width: '94%' }}
+                      transition={{ duration: 2, delay: 0.8, ease: "easeOut" }}
+                      viewport={{ once: true }}
+                    />
                   </div>
-                  <div className="text-xs text-muted-foreground">Excellent Performance - Happy Customers</div>
+                  <div className="text-sm font-medium text-green-700/80 dark:text-green-300/80">Excellent Performance - Happy Customers</div>
                 </div>
               </div>
             </div>
 
             {/* Key Metrics Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="text-center p-4 border rounded-lg">
-                <div className="text-3xl font-weight-display font-bold text-secondary">83%</div>
-                <div className="text-sm text-muted-foreground">Faster Loading</div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="text-center p-8 border border-secondary/30 rounded-2xl bg-gradient-to-br from-secondary/20 via-secondary/10 to-secondary/25 backdrop-blur-md shadow-xl">
+                <div className="text-5xl font-weight-display font-bold text-secondary mb-3">83%</div>
+                <div className="text-base font-medium text-muted-foreground">Faster Loading</div>
               </div>
-              <div className="text-center p-4 border rounded-lg">
-                <div className="text-3xl font-weight-display font-bold text-secondary">127%</div>
-                <div className="text-sm text-muted-foreground">More Conversions</div>
+              <div className="text-center p-8 border border-secondary/30 rounded-2xl bg-gradient-to-br from-secondary/20 via-secondary/10 to-secondary/25 backdrop-blur-md shadow-xl">
+                <div className="text-5xl font-weight-display font-bold text-secondary mb-3">127%</div>
+                <div className="text-base font-medium text-muted-foreground">More Conversions</div>
               </div>
-              <div className="text-center p-4 border rounded-lg">
-                <div className="text-3xl font-weight-display font-bold text-secondary">$158K</div>
-                <div className="text-sm text-muted-foreground">Revenue Increase</div>
+              <div className="text-center p-8 border border-secondary/30 rounded-2xl bg-gradient-to-br from-secondary/20 via-secondary/10 to-secondary/25 backdrop-blur-md shadow-xl">
+                <div className="text-5xl font-weight-display font-bold text-secondary mb-3">$158K</div>
+                <div className="text-base font-medium text-muted-foreground">Revenue Increase</div>
               </div>
             </div>
 
             {/* Optimization Timeline */}
-            <div className="space-y-6">
-              <h3 className="text-lg font-weight-display font-semibold text-center">WooCommerce Optimization Process</h3>
-              
-              <div className="relative">
-                {/* Progress line */}
-                <div className="absolute top-6 left-0 w-full h-0.5 bg-muted"></div>
-                <div 
-                  className="absolute top-6 left-0 h-0.5 bg-secondary transition-all duration-1000 ease-out"
-                  style={{ width: '100%' }}
-                ></div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {/* Phase 1 */}
-                  <div className="relative">
-                    <div className="absolute top-4 -left-2 z-10 flex size-4 items-center justify-center rounded-full bg-background border-2 border-secondary">
-                      <div className="size-2 rounded-full bg-secondary"></div>
-                    </div>
-                    <div className="pl-6 space-y-2">
-                      <div className="flex items-center gap-2">
-                        <Zap className="size-4 text-secondary" />
-                        <span className="text-sm font-semibold">Phase 1</span>
-                      </div>
-                      <h4 className="font-medium text-sm">Database Optimization</h4>
-                      <p className="text-xs text-muted-foreground">Clean legacy tables, optimize queries</p>
-                    </div>
-                  </div>
-
-                  {/* Phase 2 */}
-                  <div className="relative">
-                    <div className="absolute top-4 -left-2 z-10 flex size-4 items-center justify-center rounded-full bg-background border-2 border-secondary">
-                      <div className="size-2 rounded-full bg-secondary"></div>
-                    </div>
-                    <div className="pl-6 space-y-2">
-                      <div className="flex items-center gap-2">
-                        <Shield className="size-4 text-secondary" />
-                        <span className="text-sm font-semibold">Phase 2</span>
-                      </div>
-                      <h4 className="font-medium text-sm">Redis Caching</h4>
-                      <p className="text-xs text-muted-foreground">Object caching, page optimization</p>
-                    </div>
-                  </div>
-
-                  {/* Phase 3 */}
-                  <div className="relative">
-                    <div className="absolute top-4 -left-2 z-10 flex size-4 items-center justify-center rounded-full bg-background border-2 border-secondary">
-                      <div className="size-2 rounded-full bg-secondary"></div>
-                    </div>
-                    <div className="pl-6 space-y-2">
-                      <div className="flex items-center gap-2">
-                        <Users className="size-4 text-secondary" />
-                        <span className="text-sm font-semibold">Phase 3</span>
-                      </div>
-                      <h4 className="font-medium text-sm">Admin Speed Boost</h4>
-                      <p className="text-xs text-muted-foreground">Dashboard optimization, UI improvements</p>
-                    </div>
-                  </div>
-
-                  {/* Phase 4 */}
-                  <div className="relative">
-                    <div className="absolute top-4 -left-2 z-10 flex size-4 items-center justify-center rounded-full bg-background border-2 border-secondary">
-                      <div className="size-2 rounded-full bg-secondary"></div>
-                    </div>
-                    <div className="pl-6 space-y-2">
-                      <div className="flex items-center gap-2">
-                        <ArrowRight className="size-4 text-secondary" />
-                        <span className="text-sm font-semibold">Phase 4</span>
-                      </div>
-                      <h4 className="font-medium text-sm">Checkout Optimization</h4>
-                      <p className="text-xs text-muted-foreground">Payment flow, conversion optimization</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Timeline11 />
           </div>
         </div>
       </div>
